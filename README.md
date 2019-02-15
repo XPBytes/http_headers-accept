@@ -24,27 +24,27 @@ Or install it yourself as:
 
 ## Usage
 
-### List
-
-There is a utility class for list based headers. The utility parses the header values(s) for you and 
-outputs a custom entry class. This can be used for almost any header that allows multiple values, as
-per the RFC these are consistent with the exception of the Cookie / Set-Cookie headers (at time of 
-writing).
+You can parse the "Accept" header. As per the RFCs, you should really have one (delimited) value but the current 
+implementation accepts an array of values.
 
 ```ruby
-require 'http_headers/accept/list'
+require 'http_headers/accept'
 
-class ListBasedHeader < Accept::List
-  def initialize(value)
-    super value, entry_klazz: Entry
-  end
-  
-  class Entry
-    def initialize(value, index:, parameters:)
-    
-    end
-  end
-end
+parsed = HttpHeaders::Accept.new('application/json, text/html; q=0.8')
+parsed.first.to_s
+# => 'application/json' 
+parsed.last.q
+# => 0.8
+ 
+ 
+parsed = HttpHeaders::Accept.new([
+  '*/*; q=0.1', 
+  'application/json; foo=bar, text/html; q=0.8'
+])
+parsed.first[:foo]
+# => bar
+parsed.last.to_s
+# => '*/*; q=0.1'
 ```
 
 ## Development
