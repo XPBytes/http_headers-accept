@@ -47,6 +47,17 @@ parsed.last.to_s
 # => '*/*; q=0.1'
 ```
 
+Each parsed entry exposes the following methods:
+- `media_type`: the parsed media_type
+- `q`: the quality parameter as float, or 1.0
+- `[](parameter)`: accessor for the parameter; throws if it does not exist
+- `to_s`: encode back to an entry to be used in a `Accept` header
+
+## Related
+
+- [HttpHeaders::Utils](https://github.com/XPBytes/http_headers-utils): :nut_and_bolt: Utility belt for the HttpHeader libraries
+- [HttpHeaders::AcceptLanguage](https://github.com/XPBytes/http_headers-accept_language): :nut_and_bolt: Utility to parse and sort the "Accept-Language" HTTP Header
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can
