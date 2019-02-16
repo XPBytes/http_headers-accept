@@ -58,6 +58,7 @@ Each parsed entry exposes the following methods:
 - [HttpHeaders::Utils](https://github.com/XPBytes/http_headers-utils): :nut_and_bolt: Utility belt for the HttpHeader libraries
 - [HttpHeaders::AcceptLanguage](https://github.com/XPBytes/http_headers-accept_language): :nut_and_bolt: Utility to parse and sort the "Accept-Language" HTTP Header
 - [HttpHeaders::ContentType](https://github.com/XPBytes/http_headers-content_type): :nut_and_bolt: Utility to parse and sort the "Content-Type" HTTP Header
+- [HttpHeaders::Link](https://github.com/XPBytes/http_headers-link): :nut_and_bolt: Utility to parse and sort the "Link" HTTP Header
 
 
 ## Development
