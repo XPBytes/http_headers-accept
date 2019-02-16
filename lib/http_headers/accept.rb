@@ -1,10 +1,8 @@
+require 'http_headers/accept/version'
 require 'http_headers/utils/list'
-require 'delegate'
 
 module HttpHeaders
-  class Accept < DelegateClass(Array)
-    VERSION = "0.2.0"
-
+  class Accept # < DelegateClass(Array) determined by version
     def initialize(value)
       __setobj__ HttpHeaders::Utils::List.new(value, entry_klazz: Accept::Entry)
     end
