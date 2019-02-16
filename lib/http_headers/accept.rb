@@ -1,12 +1,12 @@
-require 'http_headers/utils'
+require 'http_headers/utils/list'
+require 'delegate'
 
 module HttpHeaders
-  class Accept < Utils::List
-    VERSION = "0.1.0"
+  class Accept < DelegateClass(Array)
+    VERSION = "0.2.0"
 
     def initialize(value)
-      super value, entry_klazz: Accept::Entry
-      sort!
+      __setobj__ HttpHeaders::Utils::List.new(value, entry_klazz: Accept::Entry)
     end
 
     class Entry
@@ -35,7 +35,7 @@ module HttpHeaders
         parameters.fetch(String(parameter).to_sym)
       end
 
-      def inspect
+      def to_header
         to_s
       end
 
