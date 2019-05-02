@@ -26,7 +26,7 @@ module HttpHeaders
       def <=>(other)
         quality = other.q <=> q
         return quality unless quality.zero?
-        index <=> other.index
+        index <=> other.send(:index)
       end
 
       def [](parameter)
